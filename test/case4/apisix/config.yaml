@@ -1,0 +1,10 @@
+apisix:
+  enable_admin: false
+deployment:
+  role: data_plane
+  role_data_plane:
+    config_provider: yaml
+nginx_config:
+  worker_processes: 1
+  http:
+    enable_access_log: false

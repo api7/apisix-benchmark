@@ -1,0 +1,20 @@
+routes:
+  -
+    uri: /hello
+    upstream:
+      nodes:
+        "127.0.0.1:1980": 1
+      type: roundrobin
+    plugins:
+      key-auth:
+      limit-count:
+        count: 999999999
+        time_window: 60
+        rejected_code: 503
+        key: remote_addr
+consumers:
+  - username: jack
+    plugins:
+        key-auth:
+            key: user-key
+#END
