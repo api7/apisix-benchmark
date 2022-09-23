@@ -39,6 +39,8 @@ for i in {1..5000}; do \
 done
 echo "#END" >> $PWD/test/case4/apisix/apisix.yaml
 
+sleep 1
+
 sudo docker run --name apisix-standalone \
     -v $PWD/test/case4/apisix/config.yaml:/usr/local/apisix/conf/config.yaml \
     -v $PWD/test/case4/apisix/apisix.yaml:/usr/local/apisix/conf/apisix.yaml \

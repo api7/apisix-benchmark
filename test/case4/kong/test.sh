@@ -40,6 +40,7 @@ for i in {1..5000}; do \
     - /hello$i" >> $PWD/test/case4/kong/declarative/kong.yaml
 done
 
+sleep 1
 
 sudo docker run -d --name kong-dbless \
     --network=host \
@@ -58,5 +59,5 @@ rm -rf $PWD/test/case4/kong/result || true
 mkdir $PWD/test/case4/kong/result
 
 for i in {1..3}; do \
-    wrk -c100 -t4 -d10 -R26000 -U http://127.0.0.1:8000/hello -H "apikey: my-key" > $PWD/test/case4/kong/result/$i.log 2>&1
+    wrk -c100 -t4 -d10 -R26000 -U http://127.0.0.1:8000/hello5000 > $PWD/test/case4/kong/result/$i.log 2>&1
 done
