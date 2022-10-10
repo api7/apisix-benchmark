@@ -8,3 +8,6 @@ nginx_config:
   worker_processes: 1
   http:
     enable_access_log: false
+  enable_cpu_affinity: false
+plugins:
+  - example-plugin
