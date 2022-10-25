@@ -40,7 +40,7 @@ for i in {1..5000}; do \
     - /hello$i" >> $PWD/test/case4/kong/declarative/kong.yaml
 done
 
-sleep 1
+sleep 3
 
 sudo docker run -d --name kong-dbless \
     --network=host \
@@ -53,11 +53,11 @@ sudo docker run -d --name kong-dbless \
     -p 8000:8000 \
     kong:3.0.0-ubuntu
 
-sleep 3
+sleep 6
 
 rm -rf $PWD/test/case4/kong/result || true
 mkdir $PWD/test/case4/kong/result
 
-for i in {1..3}; do \
-    wrk -c100 -t4 -d10 -R26000 -U http://127.0.0.1:8000/hello5000 > $PWD/test/case4/kong/result/$i.log 2>&1
+for i in {1..10}; do \
+    wrk -c100 -t4 -d10 -R99999 -U http://127.0.0.1:8000/hello5000 > $PWD/test/case4/kong/result/$i.log 2>&1
 done

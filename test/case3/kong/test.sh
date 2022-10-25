@@ -41,6 +41,6 @@ sleep 3
 rm -rf $PWD/test/case3/kong/result || true
 mkdir $PWD/test/case3/kong/result
 
-for i in {1..3}; do \
+for i in {1..10}; do \
     wrk -c100 -t4 -d10 -R26000 -U http://127.0.0.1:8000/hello -H "apikey: my-key" > $PWD/test/case3/kong/result/$i.log 2>&1
 done

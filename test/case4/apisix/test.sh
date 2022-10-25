@@ -39,20 +39,21 @@ for i in {1..5000}; do \
 done
 echo "#END" >> $PWD/test/case4/apisix/apisix.yaml
 
-sleep 1
+sleep 3
 
 sudo docker run --name apisix-standalone \
     -v $PWD/test/case4/apisix/config.yaml:/usr/local/apisix/conf/config.yaml \
     -v $PWD/test/case4/apisix/apisix.yaml:/usr/local/apisix/conf/apisix.yaml \
+    -v /home/tzs/apisix/apisix:/usr/local/apisix/apisix \
     -p 9080:9080 \
     --network=host \
     -d apache/apisix:dev
 
-sleep 3
+sleep 6
 
 rm -rf $PWD/test/case4/apisix/result || true
 mkdir $PWD/test/case4/apisix/result
 
-for i in {1..3}; do \
-    wrk -c100 -t4 -d10 -R26000 -U http://127.0.0.1:9080/hello5000 > $PWD/test/case4/apisix/result/$i.log 2>&1
+for i in {1..10}; do \
+    wrk -c100 -t4 -d10 -R99999 -U http://127.0.0.1:9080/hello5000 > $PWD/test/case4/apisix/result/$i.log 2>&1
 done
