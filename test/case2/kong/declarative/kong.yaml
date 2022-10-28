@@ -1,0 +1,16 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+- name: hello
+  url: http://127.0.0.1:1980
+  routes:
+  - name: hello
+    paths:
+    - /hello
+    plugins:
+    - name: rate-limiting
+      config:
+        minute: 999999999
+        limit_by: ip
+        policy: local

@@ -39,3 +39,8 @@ luac.out
 *.x86_64
 *.hex
 
+# develop
+*.log
+*.pid
+test/case4/apisix/apisix.yaml
+test/case4/kong/declarative/kong.yaml
