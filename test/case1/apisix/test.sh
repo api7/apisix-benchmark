@@ -27,7 +27,6 @@ trap clean_up EXIT
 
 sudo docker run --name apisix-standalone \
     -v $PWD/test/case1/apisix/config.yaml:/usr/local/apisix/conf/config.yaml \
-    -v /home/tzs/apisix/apisix:/usr/local/apisix/apisix \
     -v $PWD/test/case1/apisix/apisix.yaml:/usr/local/apisix/conf/apisix.yaml \
     -p 9080:9080 \
     --network=host \

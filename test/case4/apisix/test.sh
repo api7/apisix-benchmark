@@ -44,7 +44,6 @@ sleep 3
 sudo docker run --name apisix-standalone \
     -v $PWD/test/case4/apisix/config.yaml:/usr/local/apisix/conf/config.yaml \
     -v $PWD/test/case4/apisix/apisix.yaml:/usr/local/apisix/conf/apisix.yaml \
-    -v /home/tzs/apisix/apisix:/usr/local/apisix/apisix \
     -p 9080:9080 \
     --network=host \
     -d apache/apisix:dev
